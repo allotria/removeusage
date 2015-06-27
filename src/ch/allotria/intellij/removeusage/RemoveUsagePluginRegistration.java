@@ -5,15 +5,19 @@ import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RemoveUsagePluginRegistration implements ApplicationComponent {
 
     @Override
     public void initComponent() {
         ActionManager am = ActionManager.getInstance();
-        AnAction deleteLineAction = am.getAction("DeleteLine");
 
         RemoveUsageAction removeUsageAction = new RemoveUsageAction("Remove", "Remove this usage(s) from processing");
-        removeUsageAction.copyShortcutFrom(deleteLineAction);
+        ShortcutSet shortcutSet = buildShortcutSet(am, "EditorDeleteLine", "SafeDelete");
+        removeUsageAction.registerCustomShortcutSet(shortcutSet, null);
+
 
         am.registerAction("UsageView.Remove", removeUsageAction);
         DefaultActionGroup usageViewPopup = (DefaultActionGroup) am.getAction("UsageView.Popup");
@@ -21,6 +25,19 @@ public class RemoveUsagePluginRegistration implements ApplicationComponent {
 
         Constraints constraints = new Constraints(Anchor.AFTER, "UsageView.Exclude");
         usageViewPopup.add(removeUsageAction, constraints);
+    }
+
+    private ShortcutSet buildShortcutSet(ActionManager am, String... actionIds) {
+        List<Shortcut> shortcuts = new ArrayList<>(actionIds.length);
+
+        for (String actionId : actionIds) {
+            KeyboardShortcut shortcut = am.getKeyboardShortcut(actionId);
+            if (shortcut != null) {
+                shortcuts.add(shortcut);
+            }
+        }
+
+        return new CustomShortcutSet(shortcuts.toArray(new Shortcut[shortcuts.size()]));
     }
 
     @Override
