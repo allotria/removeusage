@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>allotria/removeusage</id>
   <name>Remove Usage Plugin</name>
-  <version>0.8</version>
+  <version>0.9</version>
   <vendor url="https://github.com/allotria/removeusage">allotria</vendor>
 
   <description>Plugin that enables "Eclipse like" removal of search items from usage search results.</description>
@@ -9,7 +9,10 @@
   <change-notes>Added remove action to context menu.</change-notes>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-  <idea-version since-build="141"/>
+  <idea-version since-build="129.000"/>
+
+  <!-- Mark the plugin as compatible with all products building on IntelliJ platform -->
+  <depends>com.intellij.modules.lang</depends>
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
