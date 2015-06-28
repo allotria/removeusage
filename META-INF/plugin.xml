@@ -6,7 +6,7 @@
 
   <description>Plugin that enables "Eclipse like" removal of search items from usage search results.</description>
 
-  <change-notes>Added remove action to context menu.</change-notes>
+  <change-notes>Added keyboard shortcut and made plugin available to other supported products as well.</change-notes>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
   <idea-version since-build="129.000"/>
