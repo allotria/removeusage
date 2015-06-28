@@ -31,6 +31,10 @@
 
   <actions>
     <!-- Add your project actions here -->
+    <action id="UsageView.Delete" text="Remove" description="Remove this usage(s) from processing" class="ch.allotria.intellij.removeusage.action.RemoveUsageAction" >
+      <add-to-group group-id="UsageView.Popup" anchor="after" relative-to-action="UsageView.Exclude"/>
+      <keyboard-shortcut first-keystroke="alt BACK_SPACE" keymap="$default" />
+    </action>
   </actions>
 
 </idea-plugin>

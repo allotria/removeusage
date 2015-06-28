@@ -19,16 +19,11 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.usages.Usage;
 import com.intellij.usages.UsageView;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Manuel Stadelmann
  */
 public class RemoveUsageAction extends AnAction {
-
-    public RemoveUsageAction(@Nullable String text, @Nullable String description) {
-        super(text, description, null);
-    }
 
     protected void process(Usage[] usages, UsageView usageView) {
         for (Usage usage : usages) {
